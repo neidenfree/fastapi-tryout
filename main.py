@@ -41,9 +41,10 @@ async def get_all() -> list:
 
 @app.post("/add")
 async def add_one(name: str, age: int, location: Optional[str]) -> None:
-    await collection.insert_one({"name": name, "age": age, "location": location})
+    collection.insert_one({"name": name, "age": age, "location": location})
     return None
 
 
 if __name__ == "__main__":
+    uvicorn.run(app, host="23.111.121.144", port=8888)
     uvicorn.run(app, host="localhost", port=8888)
